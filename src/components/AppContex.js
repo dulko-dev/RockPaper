@@ -3,15 +3,15 @@ import React, { createContext, useState } from "react";
 export const AppContext = createContext();
 
 export const AppProvider = (props) => {
-  // const [isVisible, setIsVisible] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
+  const [score, setScore] = useState({
+    player: 0,
+    computer: 0,
+  });
 
   return (
     <AppContext.Provider
-      value={
-        // game: [isVisible, setIsVisible],
-        [isHidden, setIsHidden]
-      }
+      value={{ hidden: [isHidden, setIsHidden], scoreBoard: [score, setScore] }}
     >
       {props.children}
     </AppContext.Provider>

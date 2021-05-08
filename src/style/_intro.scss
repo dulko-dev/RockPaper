@@ -4,11 +4,9 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  transition: 0.5s;
+  transition: all 0.3s ease-in;
   h2 {
-    font-size: 50px;
-    color: $mainColor;
-    font-family: sans-serif;
+    @include gameTitle(50px, $mainColor, sans-serif)
   }
   &__btn {
     padding: 15px 30px;

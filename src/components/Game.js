@@ -1,31 +1,178 @@
-import React, { useContext } from "react";
-import spock from "../assets/spock.png";
-import lizard from "../assets/lizard.png";
+import React, { useContext, useEffect, useState } from "react";
+import emptyPic from "../assets/emptyPic.png";
 import { AppContext } from "./AppContex";
 
 function Game() {
-  const [isHidden] = useContext(AppContext);
+  const { hidden, scoreBoard } = useContext(AppContext);
+  const [isHidden] = hidden;
+  const [score, setScore] = scoreBoard;
+
+  const [playerOption, setPlayerOption] = useState("");
+  const [computerOption, setComputerOption] = useState("");
+  const [info, setInfo] = useState("");
+  const [round, setRound] = useState(1);
+  const [readyToGo, setReadyToGo] = useState(true);
+
+  useEffect(() => {
+    const findOption = (player, computer) => {
+      if (player === computer) {
+        setInfo("draw");
+        return;
+      }
+
+      if (player === "rock") {
+        if (computer === "paper") {
+          setInfo("computer win");
+          setScore({ ...score, computer: score.computer + 1 });
+        } else if (computer === "scissors") {
+          setInfo("player win");
+          setScore({ ...score, player: score.player + 1 });
+        } else if (computer === "lizard") {
+          setInfo("player win");
+          setScore({ ...score, player: score.player + 1 });
+        } else {
+          setInfo("computer win");
+          setScore({ ...score, computer: score.computer + 1 });
+        }
+        return;
+      }
+
+      if (player === "paper") {
+        if (computer === "rock") {
+          setInfo("player win");
+          setScore({ ...score, player: score.player + 1 });
+        } else if (computer === "scissors") {
+          setInfo("computer win");
+          setScore({ ...score, computer: score.computer + 1 });
+        } else if (computer === "lizard") {
+          setInfo("computer win");
+          setScore({ ...score, computer: score.computer + 1 });
+        } else {
+          setInfo("player win");
+          setScore({ ...score, player: score.player + 1 });
+        }
+        return;
+      }
+
+      if (player === "scissors") {
+        if (computer === "rock") {
+          setInfo("computer win");
+          setScore({ ...score, computer: score.computer + 1 });
+        } else if (computer === "paper") {
+          setInfo("player win");
+          setScore({ ...score, player: score.player + 1 });
+        } else if (computer === "lizard") {
+          setInfo("player win");
+          setScore({ ...score, player: score.player + 1 });
+        } else {
+          setInfo("player win");
+          setScore({ ...score, computer: score.computer + 1 });
+        }
+        return;
+      }
+
+      if (player === "lizard") {
+        if (computer === "rock") {
+          setInfo("computer win");
+          setScore({ ...score, computer: score.computer + 1 });
+        } else if (computer === "paper") {
+          setInfo("player win");
+          setScore({ ...score, player: score.player + 1 });
+        } else if (computer === "scissors") {
+          setInfo("computer win");
+          setScore({ ...score, computer: score.computer + 1 });
+        } else {
+          setInfo("player win");
+          setScore({ ...score, computer: score.computer + 1 });
+        }
+        return;
+      }
+
+      if (player === "spock") {
+        if (computer === "rock") {
+          setInfo("player win");
+          setScore({ ...score, player: score.player + 1 });
+        } else if (computer === "paper") {
+          setInfo("computer win");
+          setScore({ ...score, computer: score.computer + 1 });
+        } else if (computer === "lizard") {
+          setInfo("computer win");
+          setScore({ ...score, computer: score.computer + 1 });
+        } else {
+          setInfo("player win");
+          setScore({ ...score, computer: score.computer + 1 });
+        }
+        return;
+      }
+    };
+    findOption(playerOption, computerOption);
+  }, [round]);
+
+  const changeImg = (e) => {
+    setPlayerOption(e.target.name);
+    const computerArray = ["rock", "paper", "scissors", "lizard", "spock"];
+    const randomOption = Math.floor(Math.random() * 5);
+    setComputerOption(computerArray[randomOption]);
+    setRound(round + 1);
+    setReadyToGo(false);
+  };
+
   return (
-    <>
-      {isHidden && (
-        <div className="game">
-          <h2>Choose an option</h2>
-          <div className="game__tools">
-            <div className="game__img">
-              <img style={{ width: "200px" }} src={spock} alt="player" />
-              <img style={{ width: "200px" }} src={lizard} alt="computer" />
-            </div>
-            <div className="game__options">
-              <button className="rock">rock</button>
-              <button className="paper">paper</button>
-              <button className="scissors">scissors</button>
-              <button className="lizard">lizard</button>
-              <button className="spock">spock</button>
-            </div>
-          </div>
+    <div
+      className="game"
+      style={
+        isHidden
+          ? { opacity: "1", pointerEvents: "all" }
+          : { opacity: "0", pointerEvents: "none" }
+      }
+    >
+      <h3>Round {round}</h3>
+      <h2>{readyToGo ? "Select an option" : info}</h2>
+      <div className="game__tools">
+        <div className="game__img">
+          {readyToGo ? (
+            <>
+              <img
+                src={emptyPic}
+                alt="empty"
+                style={{ width: "200px", paddingRight: "20px" }}
+              />
+              <img src={emptyPic} alt="empty" style={{ width: "200px" }} />
+            </>
+          ) : (
+            <>
+              <img
+                style={{ width: "200px" }}
+                src={require(`../assets/${playerOption}.png`).default}
+                alt="player"
+              />
+              <img
+                style={{ width: "200px" }}
+                src={require(`../assets/${computerOption}.png`).default}
+                alt="computer"
+              />
+            </>
+          )}
         </div>
-      )}
-    </>
+        <div className="game__options">
+          <button name="rock" onClick={changeImg}>
+            rock
+          </button>
+          <button name="paper" onClick={changeImg}>
+            paper
+          </button>
+          <button name="scissors" onClick={changeImg}>
+            scissors
+          </button>
+          <button name="lizard" onClick={changeImg}>
+            lizard
+          </button>
+          <button name="spock" onClick={changeImg}>
+            spock
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 
