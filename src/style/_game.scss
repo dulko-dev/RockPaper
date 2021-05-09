@@ -6,6 +6,7 @@
   transition: all 0.4s 1s ease-out;
   h3 {
     @include gameTitle(30px, $mainColor, sans-serif, center);
+    padding-bottom: 10px;
   }
   h2 {
     @include gameTitle(50px, $mainColor, sans-serif, center);

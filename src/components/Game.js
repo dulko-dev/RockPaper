@@ -7,6 +7,7 @@ function Game() {
   const [isHidden] = hidden;
   const [score, setScore] = scoreBoard;
 
+  const [isDisabled, setIsDisabled] = useState(false);
   const [playerOption, setPlayerOption] = useState("");
   const [computerOption, setComputerOption] = useState("");
   const [info, setInfo] = useState("");
@@ -83,7 +84,7 @@ function Game() {
           setScore({ ...score, computer: score.computer + 1 });
         } else {
           setInfo("player win");
-          setScore({ ...score, computer: score.computer + 1 });
+          setScore({ ...score, player: score.player + 1 });
         }
         return;
       }
@@ -108,13 +109,21 @@ function Game() {
     findOption(playerOption, computerOption);
   }, [round]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setReadyToGo(true);
+      setIsDisabled(false);
+    }, 1000);
+  }, [round]);
+
   const changeImg = (e) => {
     setPlayerOption(e.target.name);
     const computerArray = ["rock", "paper", "scissors", "lizard", "spock"];
     const randomOption = Math.floor(Math.random() * 5);
     setComputerOption(computerArray[randomOption]);
-    setRound(round + 1);
     setReadyToGo(false);
+    setIsDisabled(true);
+    setRound(round + 1);
   };
 
   return (
@@ -127,7 +136,7 @@ function Game() {
       }
     >
       <h3>Round {round}</h3>
-      <h2>{readyToGo ? "Select an option" : info}</h2>
+      <h2>{readyToGo ? "select an option" : info}</h2>
       <div className="game__tools">
         <div className="game__img">
           {readyToGo ? (
@@ -142,19 +151,30 @@ function Game() {
           ) : (
             <>
               <img
-                style={{ width: "200px" }}
+                style={{
+                  width: "200px",
+                  height: "225px",
+                  paddingRight: "20px",
+                }}
                 src={require(`../assets/${playerOption}.png`).default}
                 alt="player"
               />
               <img
-                style={{ width: "200px" }}
+                style={{ width: "200px", height: "225px" }}
                 src={require(`../assets/${computerOption}.png`).default}
                 alt="computer"
               />
             </>
           )}
         </div>
-        <div className="game__options">
+        <div
+          className="game__options"
+          style={
+            isDisabled
+              ? { opacity: "0", pointerEvents: "none" }
+              : { opacity: "1", pointerEvents: "all" }
+          }
+        >
           <button name="rock" onClick={changeImg}>
             rock
           </button>
