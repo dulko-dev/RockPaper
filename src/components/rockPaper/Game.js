@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import emptyPic from "../assets/emptyPic.png";
-import { AppContext } from "./AppContex";
+import emptyPic from "../../assets/emptyPic.png";
+import { AppContext } from "../AppContex";
 
 function Game() {
   const { hidden, scoreBoard } = useContext(AppContext);
@@ -156,12 +156,12 @@ function Game() {
                   height: "225px",
                   paddingRight: "20px",
                 }}
-                src={require(`../assets/${playerOption}.png`).default}
+                src={require(`../../assets/${playerOption}.png`).default}
                 alt="player"
               />
               <img
                 style={{ width: "200px", height: "225px" }}
-                src={require(`../assets/${computerOption}.png`).default}
+                src={require(`../../assets/${computerOption}.png`).default}
                 alt="computer"
               />
             </>

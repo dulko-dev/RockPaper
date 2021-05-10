@@ -1,0 +1,26 @@
+.cards {
+  max-width: 1400px;
+  margin: 0 auto;
+  &__wrapped {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .card {
+      width: 200px;
+      height: 175px;
+      min-width: 200px;
+      margin: 5px;
+      background-size: contain ;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .blank {
+      background-image: url("../../assets/simpson/backCover.png") !important;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      background-size: contain !important;
+      height: 175px;
+      width: 200px;
+    }
+  }
+}

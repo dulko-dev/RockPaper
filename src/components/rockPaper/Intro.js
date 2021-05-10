@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { AppContext } from "./AppContex";
+import { AppContext } from "../AppContex";
 
 function Intro() {
   const { hidden } = useContext(AppContext);
