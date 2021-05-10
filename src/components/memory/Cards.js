@@ -3,10 +3,10 @@ import { images } from "./imageOfCards";
 
 function Cards() {
   let pairs = [];
-
+  console.log(pairs);
   const handleClick = (e) => {
     let card = e.target;
-
+    console.log(card);
     if (card.getAttribute("check") === "found") {
       return;
     }
@@ -34,8 +34,8 @@ function Cards() {
 
   let allBackCoverPic = document.getElementsByClassName("blank");
   if (allBackCoverPic.length < 1) {
-    console.log(allBackCoverPic)
-    let resetGame = document.querySelectorAll("card");
+    console.log(allBackCoverPic);
+    let resetGame = document.querySelectorAll(".card");
     for (let i = 0; i < resetGame.length; i++) {
       resetGame[i].classList.add("blank");
       resetGame[i].setAttribute("check", "false");
@@ -64,20 +64,22 @@ function Cards() {
 
   return (
     <div className="cards">
-      <div className="cards__wrapped">
-        {images
-          .sort(() => Math.random() - 0.5)
-          .map((card) => (
-            <img
-              key={Math.random() * 1000}
-              style={{ backgroundImage: `url(${card.pic})` }}
-              className="card blank"
-              name={card.name}
-              check="false"
-              onClick={handleClick}
-            />
-          ))}
-      </div>
+    
+        <div className="cards__wrapped">
+          {images
+            .sort(() => Math.random() - 0.5)
+            .map((card) => (
+              <img
+                key={Math.random() * 1000}
+                style={{ backgroundImage: `url(${card.pic})` }}
+                className="card blank"
+                name={card.name}
+                check="false"
+                onClick={handleClick}
+              />
+            ))}
+        </div>
+ 
     </div>
   );
 }
