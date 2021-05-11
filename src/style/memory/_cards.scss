@@ -10,7 +10,7 @@
       height: 175px;
       min-width: 200px;
       margin: 5px;
-      background-size: contain ;
+      background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
     }
@@ -22,5 +22,14 @@
       height: 175px;
       width: 200px;
     }
+    .winner {
+      background-image: url("../../assets/simpson/off.png") !important;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
   }
+}
+.block {
+  pointer-events: none;
 }

@@ -5,6 +5,8 @@ function App() {
   const startGame = () => {
     let start = document.querySelectorAll(".blank");
     let btn = document.querySelector(".memory__btn");
+    const unblock = document.querySelector(".block");
+    unblock.classList.remove("block");
 
     start.forEach((card) => {
       card.classList.remove("blank");

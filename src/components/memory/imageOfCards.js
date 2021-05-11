@@ -13,92 +13,74 @@ export const images = [
   {
     pic: bart,
     name: "bart",
-    flipped: false,
   },
   {
     pic: bart,
     name: "bart",
-    flipped: false,
   },
   {
     pic: abraham,
     name: "abraham",
-    flipped: false,
   },
   {
     pic: abraham,
     name: "abraham",
-    flipped: false,
   },
   {
     pic: cookie,
     name: "cookie",
-    flipped: false,
   },
   {
     pic: cookie,
     name: "cookie",
-    flipped: false,
   },
   {
     pic: family,
     name: "family",
-    flipped: false,
   },
   {
     pic: family,
     name: "family",
-    flipped: false,
   },
   {
     pic: homer,
     name: "homer",
-    flipped: false,
   },
   {
     pic: homer,
     name: "homer",
-    flipped: false,
   },
   {
     pic: kids,
     name: "kids",
-    flipped: false,
   },
   {
     pic: kids,
     name: "kids",
-    flipped: false,
   },
   {
     pic: maggie,
     name: "maggie",
-    flipped: false,
   },
   {
     pic: maggie,
     name: "maggie",
-    flipped: false,
   },
   {
     pic: rollingStones,
     name: "rollingStones",
-    flipped: false,
   },
   {
     pic: rollingStones,
     name: "rollingStones",
-    flipped: false,
   },
   {
     pic: marge,
     name: "marge",
-    flipped: false,
   },
   {
     pic: marge,
     name: "marge",
-    flipped: false,
   },
 ];
 
