@@ -16,4 +16,8 @@ $mainColor: rgb(211, 208, 208);
 
 //memory
 @import "./memory/app";
-@import "./memory//cards";
+@import "./memory/cards";
+
+//snake
+@import "./snake/app";
+@import "./snake/board";

@@ -11,6 +11,10 @@ function App() {
       <div>
         <Link to="/memory">Memory Game</Link>
       </div>
+
+      <div>
+        <Link to='/snake'>Snake</Link>
+      </div>
     </>
   );
 }
