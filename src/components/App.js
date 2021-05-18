@@ -13,7 +13,7 @@ function App() {
       </div>
 
       <div>
-        <Link to='/snake'>Snake</Link>
+        <Link to="/quiz">Quiz</Link>
       </div>
     </>
   );
