@@ -19,22 +19,7 @@
   &__container {
     width: 1400px;
     margin: 0 auto;
-    .quiz__title {
-      position: relative;
-      padding: 100px 0;
-      text-align: center;
-      font-size: 4em;
-      font-weight: 600;
-      &::after {
-        content: "";
-        position: absolute;
-        left: 15%;
-        right: 15%;
-        bottom: 0;
-        height: 2px;
-        background-color: rgb(124, 121, 121);
-      }
-    }
+    
     .quiz__setup {
       display: flex;
       justify-content: center;
