@@ -107,13 +107,18 @@ function Game() {
       }
     };
     findOption(playerOption, computerOption);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [round]);
 
   useEffect(() => {
-    setTimeout(() => {
+    const idTimeout = setTimeout(() => {
       setReadyToGo(true);
       setIsDisabled(false);
     }, 1000);
+
+    return () => {
+      clearTimeout(idTimeout);
+    }
   }, [round]);
 
   const changeImg = (e) => {

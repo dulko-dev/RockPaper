@@ -9,7 +9,7 @@ function Cards() {
   const handleClick = (e) => {
     activeCard = e.target;
     activeCard.classList.remove("blank");
-    if (activeCard == coupleCards[0]) return;
+    if (activeCard === coupleCards[0]) return;
     if (coupleCards.length === 0) {
       coupleCards[0] = activeCard;
       return;
@@ -57,6 +57,7 @@ function Cards() {
               name={card.name}
               check="false"
               onClick={handleClick}
+              alt='Simpson card '
             />
           ))}
       </div>

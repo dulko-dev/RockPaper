@@ -43,10 +43,11 @@ function QuizSetup() {
     if (quizDifficult !== "select") {
       difficultSelect.classList.remove("errorSubmit");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userName, quizCategory, quizDifficult]);
 
   const sortName = (a, b) => {
-    const na = a.name;
+    const na = a.name;  
     const nb = b.name;
     if (na < nb) {
       return -1;
@@ -68,7 +69,10 @@ function QuizSetup() {
           return res.json();
         }
       })
-      .then((data) => setQuestions(data))
+      .then((data) => {
+        setQuestions(data);
+        localStorage.setItem("question", JSON.stringify(data.results));
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -103,9 +107,9 @@ function QuizSetup() {
       setError(true);
       return;
     }
+    localStorage.setItem("user", JSON.stringify(userName));
     setError(false);
     fetchDataAfterStart();
-    setUserName("");
     setTimeout(() => {
       return history.push("/quiz/test");
     }, 1000);

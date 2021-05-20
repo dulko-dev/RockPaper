@@ -8,12 +8,19 @@ export const AppProvider = (props) => {
     player: 0,
     computer: 0,
   });
-  const [userName, setUserName] = useState('');
-  const [questions, setQuestions] = useState([])
+  const [userName, setUserName] = useState("");
+  const [questions, setQuestions] = useState([]);
+  const [quizScore, setQuizScore] = useState(0);
 
   return (
     <AppContext.Provider
-      value={{ hidden: [isHidden, setIsHidden], scoreBoard: [score, setScore], name:[userName,setUserName], question:[questions,setQuestions] }}
+      value={{
+        hidden: [isHidden, setIsHidden],
+        scoreBoard: [score, setScore],
+        name: [userName, setUserName],
+        question: [questions, setQuestions],
+        quizResult: [quizScore, setQuizScore],
+      }}
     >
       {props.children}
     </AppContext.Provider>

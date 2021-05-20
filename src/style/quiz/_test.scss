@@ -1,0 +1,38 @@
+.test {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url("../../assets/quiz/bg.png");
+    background-position: center;
+    background-repeat: repeat;
+    z-index: -1;
+    opacity: 0.2;
+  }
+  &__configure {
+    .username {
+      padding: 20px 0;
+      text-align: center;
+      font-size: 2em;
+    }
+    .records {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      p {
+          font-size: 1.5em;
+          margin-right:40px;
+        &:last-child {
+          margin-right:0;
+        }
+      }
+    }
+  }
+}
