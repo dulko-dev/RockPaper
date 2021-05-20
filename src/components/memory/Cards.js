@@ -57,7 +57,7 @@ function Cards() {
               name={card.name}
               check="false"
               onClick={handleClick}
-              alt='Simpson card '
+              alt=''
             />
           ))}
       </div>

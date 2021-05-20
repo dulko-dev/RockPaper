@@ -19,7 +19,7 @@ function Test() {
   const correctAnswer = getCategory[questionNumber].correct_answer;
 
   useEffect(() => {
-    let arrAns = [...questionAnswers,correctAnswer];
+    let arrAns = [...questionAnswers, correctAnswer];
     setQuizAnswer(arrAns.sort(() => Math.random() - 0.5));
   }, [question]);
 
@@ -34,23 +34,63 @@ function Test() {
     setQuizAnswer([]);
   };
 
+  const chooseAnswer = (name, e) => {
+    const elementName = name;
+    const elementSelected = e.target;
+    const restElement = document.querySelectorAll(".answer__choose");
+    if (elementName === correctAnswer) {
+      elementSelected.style.backgroundColor = "green";
+      restElement.forEach((element) => {
+        element.style.pointerEvents = "none";
+      });
+      setQuizScore(quizScore + 1);
+    } else {
+      elementSelected.style.backgroundColor = "red";
+      restElement.forEach((element) => {
+        element.style.pointerEvents = "none";
+      });
+    }
+  };
+
   return (
     <div className="test">
       <QuizNav />
       <div className="test__configure">
-        <div className="username">Welcome {getUserName} </div>
+        <div className="username">
+          Welcome <span>{getUserName} </span>
+        </div>
         <div className="records">
-          <p>Category: {quizCategory}</p>
-          <p>Diffuculty: {quizDifficulty}</p>
-          <p>score: {quizScore}</p>
+          <p>
+            Category: <span>{quizCategory}</span>
+          </p>
+          <p>
+            Diffuculty: <span> {quizDifficulty}</span>
+          </p>
+          <p>
+            score: <span> {quizScore} </span>
+          </p>
         </div>
       </div>
       <div className="test__table">
-        <p>Question: {question}</p>
-        {quizAnswer.map((answer) => (
-          <p key={answer}>{answer}</p>
-        ))}
-        <button onClick={changeQuestion}>Next</button>
+        <div className="question">Question {questionNumber + 1}</div>
+        <p className="question__answers">{question}</p>
+        <div className="answer">
+          {quizAnswer.map((answer, index) => (
+            <p
+              className="answer__choose"
+              onClick={(e) => chooseAnswer(answer, e)}
+              key={index}
+            >
+              {answer}
+            </p>
+          ))}
+        </div>
+        <div className="btn_component">
+          <button className="btn_reset">Reset</button>
+          <button className="btn_confirm" onClick={changeQuestion}>
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );
