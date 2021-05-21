@@ -1,29 +1,38 @@
 import React, { useState, useContext, useEffect } from "react";
 import QuizNav from "./QuizNav";
 import { AppContext } from "../AppContex";
+import { useHistory } from "react-router-dom";
 
 function Test() {
-  const { quizResult } = useContext(AppContext);
+  const { quizResult, name } = useContext(AppContext);
+  const history = useHistory();
   const [quizScore, setQuizScore] = quizResult;
+  const [userName, setUserName] = name;
   const [quizAnswer, setQuizAnswer] = useState([]);
   const [questionNumber, setQuestionNumber] = useState(0);
 
   const getUserName = JSON.parse(localStorage.getItem("user"));
   const getCategory = JSON.parse(localStorage.getItem("question"));
+  const getEmpty = JSON.parse(localStorage.getItem("empty"));
 
-  console.log(getCategory);
-  const quizCategory = getCategory[0].category;
-  const quizDifficulty = getCategory[0].difficulty;
-  const question = getCategory[questionNumber].question;
-  const questionAnswers = getCategory[questionNumber].incorrect_answers;
-  const correctAnswer = getCategory[questionNumber].correct_answer;
+  let quizCategory = [];
+  let quizDifficulty;
+  let question;
+  let questionAnswers = [];
+  let correctAnswer;
+
+  if (getCategory) {
+    quizCategory = getCategory[0].category;
+    quizDifficulty = getCategory[0].difficulty;
+    question = getCategory[questionNumber].question;
+    questionAnswers = getCategory[questionNumber].incorrect_answers;
+    correctAnswer = getCategory[questionNumber].correct_answer;
+  }
 
   useEffect(() => {
     let arrAns = [...questionAnswers, correctAnswer];
     setQuizAnswer(arrAns.sort(() => Math.random() - 0.5));
   }, [question]);
-
-  console.log(quizAnswer);
 
   const changeQuestion = () => {
     if (questionNumber >= 9) {
@@ -52,6 +61,12 @@ function Test() {
     }
   };
 
+  const handleReset = () => {
+    localStorage.clear();
+    history.push("/quiz");
+    setUserName("");
+  };
+
   return (
     <div className="test">
       <QuizNav />
@@ -72,25 +87,60 @@ function Test() {
         </div>
       </div>
       <div className="test__table">
-        <div className="question">Question {questionNumber + 1}</div>
-        <p className="question__answers">{question}</p>
-        <div className="answer">
-          {quizAnswer.map((answer, index) => (
-            <p
-              className="answer__choose"
-              onClick={(e) => chooseAnswer(answer, e)}
-              key={index}
+        {getEmpty ? (
+          <>
+            <div
+              style={{
+                textAlign: "center",
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%,-50%)",
+              }}
             >
-              {answer}
-            </p>
-          ))}
-        </div>
-        <div className="btn_component">
-          <button className="btn_reset">Reset</button>
-          <button className="btn_confirm" onClick={changeQuestion}>
-            Next
-          </button>
-        </div>
+              <p style={{ fontSize: "3em", paddingBottom: "20px" }}>
+                Sorry we don't have questions for that category
+              </p>
+              <button
+                type="button"
+                onClick={handleReset}
+                style={{
+                  padding: "20px 50px",
+                  border: "none",
+                  borderRadius: "4px",
+                  backgroundColor: "rgb(235, 79, 79)",
+                  color: "rgb(226, 226, 226)",
+                }}
+              >
+                Quit
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="question">Question {questionNumber + 1}</div>
+            <p className="question__answers">{question}</p>
+            <div className="answer">
+              {quizAnswer.map((answer, index) => (
+                <p
+                  className="answer__choose"
+                  onClick={(e) => chooseAnswer(answer, e)}
+                  key={index}
+                >
+                  {answer}
+                </p>
+              ))}
+            </div>
+            <div className="btn_component">
+              <button className="btn_quit" onClick={handleReset}>
+                Quit
+              </button>
+              <button className="btn_confirm" onClick={changeQuestion}>
+                Next
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

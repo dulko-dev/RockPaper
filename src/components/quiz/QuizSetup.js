@@ -5,6 +5,7 @@ import { AppContext } from "../AppContex";
 function QuizSetup() {
   const { name, question } = useContext(AppContext);
   const [userName, setUserName] = name;
+  const [hiddentSite, setHiddenSite] = useState(false);
   const [questions, setQuestions] = question;
   const [quizSelect, setQuizSelect] = useState([]);
   const [quizCategory, setQuizCategory] = useState("select");
@@ -46,8 +47,12 @@ function QuizSetup() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userName, quizCategory, quizDifficult]);
 
+  useEffect(() => {
+    localStorage.setItem("empty", JSON.stringify(hiddentSite));
+  }, [hiddentSite]);
+
   const sortName = (a, b) => {
-    const na = a.name;  
+    const na = a.name;
     const nb = b.name;
     if (na < nb) {
       return -1;
@@ -70,8 +75,13 @@ function QuizSetup() {
         }
       })
       .then((data) => {
-        setQuestions(data);
-        localStorage.setItem("question", JSON.stringify(data.results));
+        if (data.response_code === 1) {
+          setHiddenSite(true);
+          return;
+        } else {
+          setQuestions(data);
+          localStorage.setItem("question", JSON.stringify(data.results));
+        }
       })
       .catch((err) => {
         console.log(err);

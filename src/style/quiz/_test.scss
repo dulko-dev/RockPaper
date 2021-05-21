@@ -52,7 +52,6 @@
       text-align: center;
       font-family: sans-serif;
       &__answers {
-        word-break: break-all;
         line-height: 50px;
         text-align: center;
         font-size: 2.4em;
@@ -84,8 +83,8 @@
     .btn_component {
       position: absolute;
       bottom: 0;
-      left:50%;
-      transform:translate(-50%);
+      left: 50%;
+      transform: translate(-50%);
       button {
         padding: 20px 50px;
         border: none;
@@ -95,12 +94,12 @@
       }
       .btn_confirm {
         background-color: rgb(53, 53, 235);
-        margin-left:300px;
+        margin-left: 300px;
         &:hover {
           background-color: rgba(53, 53, 235, 0.9);
         }
       }
-      .btn_reset {
+      .btn_quit {
         background-color: rgb(235, 79, 79);
         &:hover {
           background-color: rgba(235, 79, 79, 0.9);
@@ -108,4 +107,5 @@
       }
     }
   }
+
 }

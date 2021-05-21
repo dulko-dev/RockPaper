@@ -13,7 +13,7 @@ function App() {
       <div className="quiz__container">
        <QuizNav />
         <div className="quiz__setup">
-          <QuizSetup className="quiz__form" />
+          <QuizSetup className="quiz__form"/>
           {hidden && <Test/>}
           <div className="quiz__image">
             <img src={blackboard} alt="blackboard" />
