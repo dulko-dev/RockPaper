@@ -12,12 +12,25 @@
     line-height: 18vh;
     font-family: sans-serif;
   }
-  &__btn{
-       margin: 0 auto;
-       display: block;
-       padding: 15px 30px;
-       border:none;
-       border-radius: 3px;
-       margin-bottom: 20px;
+  &__info {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    .memory__btn {
+      margin: 0 auto;
+      display: block;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 3px;
+      margin-bottom: 20px;
+    }
+    .memory__timer {
+      font-family: sans-serif;
+      font-size: 1.4em;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
   }
 }

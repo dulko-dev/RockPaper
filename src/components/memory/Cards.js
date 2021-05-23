@@ -1,10 +1,12 @@
 import React from "react";
 import { images } from "./imageOfCards";
 
-function Cards() {
-  let activeCard = "";
+function Cards(props) {
+  let begin = props.startTime;  let activeCard = "";
   let coupleCards = [];
   let gameResult = 0;
+
+
 
   const handleClick = (e) => {
     activeCard = e.target;
@@ -24,8 +26,8 @@ function Cards() {
   const checkCard = (card1, card2) => {
     setTimeout(() => {
       if (card1.name === card2.name) {
-        coupleCards.forEach((card) => card.classList.add("winner","block"));
-          gameResult++;
+        coupleCards.forEach((card) => card.classList.add("winner", "block"));
+        gameResult++;
         checkGameWinner();
       } else {
         coupleCards.forEach((card) => card.classList.add("blank"));
@@ -39,7 +41,11 @@ function Cards() {
 
   const checkGameWinner = () => {
     if (gameResult === images.length / 2) {
-      console.log("you win");
+      alert(
+        `game is over your time is: ${
+          new Date().getTime() - begin.getTime()
+        } second`
+      );
       return;
     }
   };
@@ -57,7 +63,7 @@ function Cards() {
               name={card.name}
               check="false"
               onClick={handleClick}
-              alt=''
+              alt=""
             />
           ))}
       </div>
