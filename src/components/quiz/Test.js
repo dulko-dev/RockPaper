@@ -10,6 +10,7 @@ function Test() {
   const [userName, setUserName] = name;
   const [quizAnswer, setQuizAnswer] = useState([]);
   const [questionNumber, setQuestionNumber] = useState(0);
+  const [giveAnswer, setGiveAnswer] = useState(false);
 
   const getUserName = JSON.parse(localStorage.getItem("user"));
   const getCategory = JSON.parse(localStorage.getItem("question"));
@@ -36,14 +37,21 @@ function Test() {
 
   const changeQuestion = () => {
     if (questionNumber >= 9) {
-      alert("game is over");
+      alert(
+        `${userName} thank you for join it. Your score is ${quizScore}. Congratulations!`
+      );
+      handleReset();
+    }
+    if (!giveAnswer) {
       return;
     }
     setQuestionNumber(questionNumber + 1);
+    setGiveAnswer(false);
     setQuizAnswer([]);
   };
 
   const chooseAnswer = (name, e) => {
+    setGiveAnswer(true);
     const elementName = name;
     const elementSelected = e.target;
     const restElement = document.querySelectorAll(".answer__choose");
@@ -55,8 +63,13 @@ function Test() {
       setQuizScore(quizScore + 1);
     } else {
       elementSelected.style.backgroundColor = "red";
+
       restElement.forEach((element) => {
         element.style.pointerEvents = "none";
+        const attt = element.dataset["element"];
+        if (attt === correctAnswer) {
+          element.style.backgroundColor = "green";
+        }
       });
     }
   };
@@ -65,6 +78,7 @@ function Test() {
     localStorage.clear();
     history.push("/quiz");
     setUserName("");
+    setQuizScore(0);
   };
 
   return (
@@ -123,6 +137,7 @@ function Test() {
             <div className="answer">
               {quizAnswer.map((answer, index) => (
                 <p
+                  data-element={answer}
                   className="answer__choose"
                   onClick={(e) => chooseAnswer(answer, e)}
                   key={index}
