@@ -48,7 +48,7 @@ function App() {
           Start Game
         </button>
       </div>
-      <Cards />
+      <Cards ref={{ seconds: secondRef, minutes: minuteRef }} />
     </div>
   );
 }

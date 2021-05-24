@@ -1,12 +1,12 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { images } from "./imageOfCards";
 
-function Cards(props) {
-  let begin = props.startTime;  let activeCard = "";
+function Cards(_, ref) {
+  const { seconds, minutes } = ref;
+
+  let activeCard = "";
   let coupleCards = [];
   let gameResult = 0;
-
-
 
   const handleClick = (e) => {
     activeCard = e.target;
@@ -42,10 +42,9 @@ function Cards(props) {
   const checkGameWinner = () => {
     if (gameResult === images.length / 2) {
       alert(
-        `game is over your time is: ${
-          new Date().getTime() - begin.getTime()
-        } second`
+        `Congratulation, your time is ${minutes.current.innerText} minutes and ${seconds.current.innerText} seconds`
       );
+      window.location.href = window.location.href;
       return;
     }
   };
@@ -71,4 +70,4 @@ function Cards(props) {
   );
 }
 
-export default Cards;
+export default forwardRef(Cards);
