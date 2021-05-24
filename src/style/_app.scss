@@ -1,0 +1,50 @@
+.app {
+  height: 100vh;
+  width: 100vw;
+  background: rgb(36, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(36, 0, 0, 1) 0%,
+    rgba(105, 90, 142, 1) 0%,
+    rgba(122, 143, 191, 1) 100%
+  );
+  &__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+    .app__all {
+      position: relative;
+      flex-basis: 33%;
+      overflow: hidden;
+      margin: 0 20px;
+      flex-grow: 1;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        filter: grayscale(100%);
+        background-size: cover;
+        transition: 0.5s linear;
+      }
+      &:hover::before {
+        width: 0;
+      }
+    }
+    .app__rock::before {
+      background-image: url("../assets/bg/rockPaper-bg.png");
+      background-color: inherit;
+    }
+    .app__memory::before {
+      background-image: url("../assets/bg/simpsons-bg.png");
+    }
+    .app__quiz::before {
+      background-image: url("../assets/bg/quiz-bg.png");
+    }
+  }
+}
