@@ -15,7 +15,7 @@ function Game() {
   const [readyToGo, setReadyToGo] = useState(true);
 
   useEffect(() => {
-    checkWinner();
+    winner();
   }, [readyToGo]);
 
   useEffect(() => {
@@ -129,7 +129,7 @@ function Game() {
     };
   }, [round]);
 
-  const checkWinner = () => {
+  const winner = () => {
     if (score.player === 10) {
       alert("player win");
       setScore({ player: 0, computer: 0 });

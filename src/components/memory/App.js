@@ -1,12 +1,14 @@
 import React, { useRef } from "react";
 import Cards from "./Cards";
+import { useHistory } from "react-router-dom";
 
 function App() {
   const secondRef = useRef(0);
   const minuteRef = useRef(0);
+  const history = useHistory();
 
   const timeInterval = () => {
-    let value = Number(secondRef.current.innerText++);
+    let value = secondRef.current && Number(secondRef.current.innerText++);
     if (value === 60) {
       Number(minuteRef.current.innerText++);
       secondRef.current.innerText = 0;
@@ -36,19 +38,28 @@ function App() {
     btn.setAttribute("disabled", "");
   };
 
+  const backMemory = () => {
+    history.push("/");
+  };
+
   return (
     <div className="memory">
-      <h2>Memory Card</h2>
-      <div className="memory__info">
-        <div className="memory__timer">
-          Timer: <span ref={minuteRef}>{minuteRef.current}</span> :{" "}
-          <span ref={secondRef}>{secondRef.current}</span>
-        </div>
-        <button className="memory__btn" onClick={startGame}>
-          Start Game
+      <div className="memory__container">
+        <button onClick={backMemory} className="memory__back">
+          <i className="fas fa-arrow-alt-circle-left fa-2x"></i>
         </button>
+        <h2>Memory Card</h2>
+        <div className="memory__info">
+          <div className="memory__timer">
+            Timer <span ref={minuteRef}>{minuteRef.current}</span> :{" "}
+            <span ref={secondRef}>{secondRef.current}</span>
+          </div>
+          <button className="memory__btn" onClick={startGame}>
+            Start Game
+          </button>
+        </div>
+        <Cards ref={{ seconds: secondRef, minutes: minuteRef }} />
       </div>
-      <Cards ref={{ seconds: secondRef, minutes: minuteRef }} />
     </div>
   );
 }

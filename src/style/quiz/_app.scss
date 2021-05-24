@@ -17,19 +17,29 @@
     opacity: 0.2;
   }
   &__container {
+    position: relative;
     width: 1400px;
     margin: 0 auto;
-    
+    .quiz__back {
+      border: none;
+      background-color: inherit;
+      color: rgb(31, 31, 31);
+      padding: 0;
+      margin-top: 20px;
+      &:hover {
+        color: rgb(90, 90, 90);
+      }
+    }
     .quiz__setup {
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      .quiz__image{
-          margin-top:20px;
-          flex-basis: 50%;
-          img{
-              width: 100%;
-          }
+      .quiz__image {
+        margin-top: 20px;
+        flex-basis: 50%;
+        img {
+          width: 100%;
+        }
       }
     }
   }
