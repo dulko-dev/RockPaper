@@ -5,6 +5,9 @@ function ScoreBoard() {
   const { scoreBoard } = useContext(AppContext);
   const [score] = scoreBoard;
 
+
+
+  
   return (
     <div className="scoreBoard">
       <div className="scoreBoard__player">

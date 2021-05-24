@@ -15,6 +15,10 @@ function Game() {
   const [readyToGo, setReadyToGo] = useState(true);
 
   useEffect(() => {
+    checkWinner();
+  }, [readyToGo]);
+
+  useEffect(() => {
     const findOption = (player, computer) => {
       if (player === computer) {
         setInfo("draw");
@@ -35,6 +39,7 @@ function Game() {
           setInfo("computer win");
           setScore({ ...score, computer: score.computer + 1 });
         }
+
         return;
       }
 
@@ -52,6 +57,7 @@ function Game() {
           setInfo("player win");
           setScore({ ...score, player: score.player + 1 });
         }
+
         return;
       }
 
@@ -69,6 +75,7 @@ function Game() {
           setInfo("player win");
           setScore({ ...score, computer: score.computer + 1 });
         }
+
         return;
       }
 
@@ -86,6 +93,7 @@ function Game() {
           setInfo("player win");
           setScore({ ...score, player: score.player + 1 });
         }
+
         return;
       }
 
@@ -103,6 +111,7 @@ function Game() {
           setInfo("player win");
           setScore({ ...score, computer: score.computer + 1 });
         }
+
         return;
       }
     };
@@ -115,20 +124,36 @@ function Game() {
       setReadyToGo(true);
       setIsDisabled(false);
     }, 1000);
-
     return () => {
       clearTimeout(idTimeout);
-    }
+    };
   }, [round]);
+
+  const checkWinner = () => {
+    if (score.player === 10) {
+      alert("player win");
+      setScore({ player: 0, computer: 0 });
+      window.location.reload();
+    } else if (score.computer === 10) {
+      alert("computer win");
+      setScore({ player: 0, computer: 0 });
+      window.location.reload();
+    }
+  };
 
   const changeImg = (e) => {
     setPlayerOption(e.target.name);
     const computerArray = ["rock", "paper", "scissors", "lizard", "spock"];
     const randomOption = Math.floor(Math.random() * 5);
     setComputerOption(computerArray[randomOption]);
-    setReadyToGo(false);
-    setIsDisabled(true);
-    setRound(round + 1);
+    const idTimeOut = setTimeout(() => {
+      setReadyToGo(false);
+      setIsDisabled(true);
+      setRound(round + 1);
+    }, 300);
+    return () => {
+      clearTimeout(idTimeOut);
+    };
   };
 
   return (
@@ -165,7 +190,10 @@ function Game() {
                 alt="player"
               />
               <img
-                style={{ width: "200px", height: "225px" }}
+                style={{
+                  width: "200px",
+                  height: "225px",
+                }}
                 src={require(`../../assets/${computerOption}.png`).default}
                 alt="computer"
               />
