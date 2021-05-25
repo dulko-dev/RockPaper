@@ -15,7 +15,7 @@ function Intro() {
       }
     >
       <h2>Rock Paper and Scissors</h2>
-      <button className="intro__btn" onClick={() => setIsHidden(true)}>
+      <button className="intro__btn" onClick={() =>setIsHidden(true)}>
         Let's play
       </button>
     </div>

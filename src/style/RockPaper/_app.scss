@@ -1,19 +1,28 @@
 .rockPaper {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background-color: rgb(93, 93, 104);
   &__wrapped {
+    max-width: 1400px;
+    height: 100%;
     margin: 0 auto;
-    width: 1400px;
     .rockPaper__btn {
       position: absolute;
-      top: 20px;
       border: none;
       background-color: inherit;
       color: $mainColor;
       padding: 0;
+      @media (min-width: 451px) {
+        top: 20px;
+        left: 20px;
+      }
       &:hover {
         color: white;
+      }
+      @media (max-width: 450px) {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
   }

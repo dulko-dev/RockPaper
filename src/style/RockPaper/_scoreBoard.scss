@@ -3,11 +3,25 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  @media (max-width: 214px) {
+    display: block;
+    text-align: center;
+    padding-top: 70px;
+  }
   &__player h2,
   &__computer h2 {
     font-size: 35px;
     font-family: sans-serif;
     color: $mainColor;
+    @media (max-width: 585px) {
+      font-size: 25px;
+    }
+    @media (max-width: 250px) {
+      font-size: 15px;
+    }
+    @media (max-width: 214px) {
+      padding-top: 10px;
+    }
   }
   &__player p,
   &__computer p {
@@ -15,5 +29,8 @@
     color: $mainColor;
     text-align: center;
     padding-top: 15px;
+    @media (max-width: 585px) {
+      font-size: 20px;
+    }
   }
 }

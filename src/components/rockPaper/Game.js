@@ -156,14 +156,15 @@ function Game() {
       clearTimeout(idTimeOut);
     };
   };
+  console.log(isHidden);
 
   return (
     <div
       className="game"
       style={
         isHidden
-          ? { opacity: "1", pointerEvents: "all" }
-          : { opacity: "0", pointerEvents: "none" }
+          ? { opacity: "1", visibility: "visible" }
+          : { opacity: "1", visibility: "hidden" }
       }
     >
       <h3>Round {round}</h3>
@@ -172,29 +173,18 @@ function Game() {
         <div className="game__img">
           {readyToGo ? (
             <>
-              <img
-                src={emptyPic}
-                alt="empty"
-                style={{ width: "200px", paddingRight: "20px" }}
-              />
-              <img src={emptyPic} alt="empty" style={{ width: "200px" }} />
+              <img src={emptyPic} className="empty__img" alt="empty" />
+              <img src={emptyPic} className="empty__img" alt="empty" />
             </>
           ) : (
             <>
               <img
-                style={{
-                  width: "200px",
-                  height: "225px",
-                  paddingRight: "20px",
-                }}
+                className="selected__img"
                 src={require(`../../assets/${playerOption}.png`).default}
                 alt="player"
               />
               <img
-                style={{
-                  width: "200px",
-                  height: "225px",
-                }}
+                className="selected__img"
                 src={require(`../../assets/${computerOption}.png`).default}
                 alt="computer"
               />

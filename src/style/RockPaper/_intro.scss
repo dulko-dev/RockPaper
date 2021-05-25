@@ -6,7 +6,17 @@
   align-items: center;
   transition: all 0.3s ease-in;
   h2 {
-    @include gameTitle(50px, $mainColor, sans-serif)
+    @include gameTitle(50px, $mainColor, sans-serif);
+    @media (max-width:585px){
+      font-size: 40px;
+    }
+    @media (max-width:467px){
+      text-align: center;
+      line-height: 45px;
+    }
+    @media (max-width:295px){
+    font-size: 30px;
+    }
   }
   &__btn {
     padding: 15px 30px;
