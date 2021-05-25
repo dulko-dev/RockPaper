@@ -6,12 +6,12 @@ $mainColor: rgb(211, 208, 208);
   font-family: $fontFamily;
   text-align: $textAlign;
 }
+@import "./reset";
 
 //main
 @import "./app";
 
 //rockPaper
-@import "./reset";
 @import "./RockPaper/scoreBoard";
 @import "./RockPaper/app";
 @import "./RockPaper/intro";

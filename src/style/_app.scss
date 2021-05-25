@@ -8,11 +8,19 @@
     rgba(105, 90, 142, 1) 0%,
     rgba(122, 143, 191, 1) 100%
   );
+  &__title {
+    color: $mainColor;
+    line-height: 30vh;
+    font-size: 3em;
+    height: 30vh;
+    width: 100%;
+    text-align: center;
+  }
   &__container {
     max-width: 1400px;
     margin: 0 auto;
     display: flex;
-    height: 100%;
+    height: 70vh;
     justify-content: space-around;
     align-items: center;
     .app__all {
@@ -38,10 +46,9 @@
     }
     .app__rock::before {
       background-image: url("../assets/bg/rockPaper-bg.png");
-      background-color: inherit;
     }
     .app__memory::before {
-      background-image: url("../assets/bg/simpsons-bg.png");
+      background-image: url("../assets/bg/memory-bg.png");
     }
     .app__quiz::before {
       background-image: url("../assets/bg/quiz-bg.png");
