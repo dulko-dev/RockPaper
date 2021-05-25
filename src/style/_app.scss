@@ -1,4 +1,7 @@
 .app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 100vh;
   width: 100vw;
   background: rgb(36, 0, 0);
@@ -10,25 +13,48 @@
   );
   &__title {
     color: $mainColor;
-    line-height: 30vh;
     font-size: 3em;
-    height: 30vh;
-    width: 100%;
+    padding: 100px 0;
+    align-self: center;
     text-align: center;
+    @media (max-width: 515px) {
+      padding: 50px 0;
+      font-size: 2em;
+    }
+    @media (max-width: 431px) {
+      padding: 25px 0;
+    }
+    @media (max-width: 280px) {
+      font-size: 1.5em;
+    }
+    @media (max-width: 235px) {
+      font-size: 1em;
+    }
   }
   &__container {
     max-width: 1400px;
     margin: 0 auto;
     display: flex;
-    height: 70vh;
     justify-content: space-around;
     align-items: center;
+    @media (max-width: 700px) {
+      flex-wrap: wrap;
+    }
     .app__all {
       position: relative;
       flex-basis: 33%;
       overflow: hidden;
       margin: 0 20px;
       flex-grow: 1;
+      @media (max-width: 700px) {
+        flex-grow: 0;
+      }
+      @media (max-width: 235px) {
+        margin-top: 20px;
+      }
+      img {
+        width: 100%;
+      }
       &::before {
         content: "";
         position: absolute;

@@ -44,7 +44,7 @@ function Cards(_, ref) {
       alert(
         `Congratulation, your time is ${minutes.current.innerText} minutes and ${seconds.current.innerText} seconds`
       );
-      window.location.href = window.location.href;
+      window.location.reload();
       return;
     }
   };

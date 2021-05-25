@@ -33,6 +33,7 @@ function Test() {
   useEffect(() => {
     let arrAns = [...questionAnswers, correctAnswer];
     setQuizAnswer(arrAns.sort(() => Math.random() - 0.5));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [question]);
 
   const changeQuestion = () => {

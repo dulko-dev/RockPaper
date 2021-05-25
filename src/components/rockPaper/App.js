@@ -8,9 +8,10 @@ import { AppContext } from "../AppContex";
 function App() {
   const history = useHistory();
   const { scoreBoard, hidden } = useContext(AppContext);
+ /* eslint-disable no-unused-vars */
   const [score, setScore] = scoreBoard;
   const [isHidden, setIsHidden] = hidden;
-
+/* eslint-disable no-unused-vars */
   const backToMain = () => {
     history.push("/");
     setScore({ player: 0, computer: 0 });

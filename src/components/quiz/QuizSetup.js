@@ -6,6 +6,7 @@ function QuizSetup() {
   const { name, question } = useContext(AppContext);
   const [userName, setUserName] = name;
   const [hiddentSite, setHiddenSite] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [questions, setQuestions] = question;
   const [quizSelect, setQuizSelect] = useState([]);
   const [quizCategory, setQuizCategory] = useState("select");

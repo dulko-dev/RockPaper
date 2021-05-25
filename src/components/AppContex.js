@@ -21,7 +21,6 @@ export const AppProvider = (props) => {
         name: [userName, setUserName],
         question: [questions, setQuestions],
         quizResult: [quizScore, setQuizScore],
-   
       }}
     >
       {props.children}

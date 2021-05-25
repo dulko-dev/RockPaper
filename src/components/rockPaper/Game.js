@@ -16,6 +16,7 @@ function Game() {
 
   useEffect(() => {
     winner();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [readyToGo]);
 
   useEffect(() => {
