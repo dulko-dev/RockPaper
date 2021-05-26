@@ -8,11 +8,22 @@
     .card {
       width: 200px;
       height: 175px;
-      min-width: 200px;
       margin: 5px;
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
+      @media (max-width:1048px) {
+        width:175px;
+        height: 150px;
+      }
+      @media (max-width:738px) {
+        width:150px;
+        height: 125px;
+      }
+      @media (max-width:478px) {
+        width:125px;
+        height: 100px;
+      }
     }
     .blank {
       background-image: url("../../assets/simpson/backCover.png") !important;
@@ -21,6 +32,18 @@
       background-size: contain !important;
       height: 175px;
       width: 200px;
+      @media (max-width:1048px) {
+        width:175px;
+        height: 150px;
+      }
+      @media (max-width:738px) {
+        width:150px;
+        height: 125px;
+      }
+      @media (max-width:478px) {
+        width:125px;
+        height: 100px;
+      }
     }
     .winner {
       background-image: url("../../assets/simpson/off.png") !important;

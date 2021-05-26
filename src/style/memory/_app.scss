@@ -1,13 +1,13 @@
 .memory {
-  width: 100%;
-  height: 100vh;
+  max-width: 100%;
+  min-height: 100vh;
   background-image: url("../../assets/simpson/wallpaperSimpsons.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   &__container {
     position: relative;
-    width: 1400px;
+    max-width: 1400px;
     margin: 0 auto;
     .memory__back {
       position: absolute;
@@ -16,6 +16,18 @@
       background-color: inherit;
       color: rgb(31, 31, 31);
       padding: 0;
+      margin-left: 20px;
+      @media (max-width: 478px) {
+        top: 5px;
+        i {
+          font-size: 20px;
+        }
+      }
+      @media (max-width: 192px) {
+        left: 50%;
+        margin-left: 0;
+        transform: translateX(-50%);
+      }
       &:hover {
         color: white;
       }
@@ -26,11 +38,25 @@
       height: 18vh;
       line-height: 18vh;
       font-family: sans-serif;
+      @media (max-width: 478px) {
+        font-size: 20px;
+        height: 5vh;
+        line-height: 5vh;
+      }
+      @media (max-width: 268px) {
+        display: none;
+      }
     }
     .memory__info {
       position: relative;
-      max-width: 1200px;
+      max-width: 1300px;
       margin: 0 auto;
+      @media (max-width: 268px) {
+        padding-top: 5px;
+      }
+      @media (max-width: 192px) {
+        padding-top: 30px;
+      }
       .memory__btn {
         margin: 0 auto;
         display: block;
@@ -38,14 +64,33 @@
         border: none;
         border-radius: 3px;
         margin-bottom: 20px;
+        @media (max-width: 478px) {
+          padding: 5px 10px;
+          margin-bottom: 40px;
+        }
+        @media (max-width: 192px) {
+          margin-bottom: 10px;
+        }
       }
       .memory__timer {
         font-family: sans-serif;
         font-size: 1.4em;
         position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translateY(-50%);
+        @media (min-width: 479px) {
+          top: 50%;
+          right: 0;
+          margin-right: 20px;
+          transform: translateY(-50%);
+        }
+        @media (max-width: 478px) {
+          font-size: 1em;
+          left: 50%;
+          bottom: -30px;
+          transform: translateX(-50%);
+        }
+        @media (max-width: 192px) {
+          display: none;
+        }
       }
     }
   }
