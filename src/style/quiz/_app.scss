@@ -1,7 +1,7 @@
 .quiz {
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  max-width: 100%;
+  min-height: 100vh;
   box-sizing: border-box;
   &::after {
     content: "";
@@ -18,13 +18,14 @@
   }
   &__container {
     position: relative;
-    width: 1400px;
+    max-width: 1400px;
     margin: 0 auto;
     .quiz__back {
       border: none;
       background-color: inherit;
       color: rgb(31, 31, 31);
       padding: 0;
+      margin-left: 20px;
       margin-top: 20px;
       &:hover {
         color: rgb(90, 90, 90);
@@ -34,11 +35,21 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
+      margin: 0 10px;
+      @media (max-width: 1230px) {
+        align-items: center;
+      }
+      @media (max-width:750px){
+      display: block;
+      }
       .quiz__image {
         margin-top: 20px;
         flex-basis: 50%;
+        @media (max-width: 750px) {
+          display: none;
+        }
         img {
-          width: 100%;
+          max-width: 100%;
         }
       }
     }
