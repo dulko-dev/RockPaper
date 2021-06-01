@@ -1,19 +1,19 @@
 .intro {
-  // height: 40vh;
   transition: all 0.3s ease-in;
-text-align: center;
+  text-align: center;
+  margin-top: 200px;
   h2 {
     @include gameTitle(50px, $mainColor, sans-serif, center);
-    padding: 50px 0;
-    @media (max-width:585px){
+    padding-bottom: 50px;
+    @media (max-width: 585px) {
       font-size: 40px;
     }
-    @media (max-width:467px){
+    @media (max-width: 467px) {
       text-align: center;
       line-height: 45px;
     }
-    @media (max-width:295px){
-    font-size: 30px;
+    @media (max-width: 295px) {
+      font-size: 30px;
     }
   }
   &__btn {
