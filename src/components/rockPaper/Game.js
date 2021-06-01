@@ -151,7 +151,7 @@ function Game() {
       setReadyToGo(false);
       setIsDisabled(true);
       setRound(round + 1);
-    }, 300);
+    }, 500);
     return () => {
       clearTimeout(idTimeOut);
     };

@@ -1,12 +1,10 @@
 .intro {
-  height: 40vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  // height: 40vh;
   transition: all 0.3s ease-in;
+text-align: center;
   h2 {
-    @include gameTitle(50px, $mainColor, sans-serif);
+    @include gameTitle(50px, $mainColor, sans-serif, center);
+    padding: 50px 0;
     @media (max-width:585px){
       font-size: 40px;
     }

@@ -10,12 +10,12 @@ function Intro() {
       className="intro"
       style={
         isHidden
-          ? { opacity: "0", pointerEvents: "none" }
-          : { opacity: "1", pointerEvents: "all" }
+          ? { opacity: "0", display: "none" }
+          : { opacity: "1", display: "block" }
       }
     >
       <h2>Rock Paper and Scissors</h2>
-      <button className="intro__btn" onClick={() =>setIsHidden(true)}>
+      <button className="intro__btn" onClick={() => setIsHidden(true)}>
         Let's play
       </button>
     </div>
