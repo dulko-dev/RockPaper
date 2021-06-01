@@ -19,7 +19,6 @@ function App() {
     const start = document.querySelectorAll(".blank");
     const btn = document.querySelector(".memory__btn");
     const unblock = document.querySelector(".block");
-    unblock.classList.remove("block");
 
     start.forEach((card) => {
       card.classList.remove("blank");
@@ -28,12 +27,13 @@ function App() {
     setTimeout(() => {
       start.forEach((card) => {
         card.classList.add("blank");
+        unblock.classList.remove("block");
       });
       const idInterval = setInterval(timeInterval, 1000);
       return () => {
         clearInterval(idInterval);
       };
-    }, 2000);
+    }, 2500);
 
     btn.setAttribute("disabled", "");
   };
