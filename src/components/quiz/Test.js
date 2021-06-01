@@ -147,13 +147,15 @@ function Test() {
                 </p>
               ))}
             </div>
-            <div className="btn_component">
-              <button className="btn_quit" onClick={handleReset}>
-                Quit
-              </button>
-              <button className="btn_confirm" onClick={changeQuestion}>
-                Next
-              </button>
+            <div className="btn_memory">
+              <div className="btn_component">
+                <button className="btn_quit" onClick={handleReset}>
+                  Quit
+                </button>
+                <button className="btn_confirm" onClick={changeQuestion}>
+                  Next
+                </button>
+              </div>
             </div>
           </>
         )}
